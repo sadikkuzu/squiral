@@ -5,7 +5,7 @@ from tests.testdata_squiral import data_to_where, data_next_point
 
 
 def test_version():
-    assert __version__ == '0.1.1'
+    assert __version__ == '0.1.2'
 
 
 @pytest.mark.parametrize("A, direction", data_to_where)
