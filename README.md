@@ -1,4 +1,4 @@
-# squiral.py
+# squiral
 
 **squ**are sp**iral**
 
