@@ -3,6 +3,7 @@ name = "squiral"
 version = "0.1.2"
 description = "squiral - square spiral"
 authors = ["SADIK KUZU <sadikkuzu@hotmail.com>"]
+homepage = "https://github.com/sadikkuzu/squiral"
 readme = "README.md"
 license = "MIT"
 
