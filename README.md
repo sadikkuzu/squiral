@@ -1,7 +1,7 @@
 # squiral
-![](https://img.shields.io/pypi/v/squiral) 
-[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) 
-![]( https://img.shields.io/pypi/pyversions/squiral.svg )
+[![](https://img.shields.io/pypi/v/squiral)](https://pypi.org/project/squiral/)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![](https://img.shields.io/pypi/pyversions/squiral.svg)](https://pypi.org/project/squiral/)
 
 **squ**are sp**iral**
 
@@ -17,12 +17,12 @@ Here is an example:
 
 The basic idea behind printing this matrix is<br/>
 to start from the middle of the matrix and then moving:<br/>
-```right```>> ```down```>>``` left```>>``` up```<br/>
+`right` >> `down` >> `left` >> `up`<br/>
 and not returning to the same row again.
 
 ### Install
 
-````pip install squiral````
+`pip install squiral`
 
 #### Usage
 
