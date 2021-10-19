@@ -1,11 +1,7 @@
 import pytest
-from squiral import __version__, produce
+from squiral import produce
 from squiral.squiral import next_point, to_where, directions
 from tests.testdata_squiral import data_to_where, data_next_point
-
-
-def test_version():
-    assert __version__ == '0.1.4'
 
 
 @pytest.mark.parametrize("A, direction", data_to_where)
