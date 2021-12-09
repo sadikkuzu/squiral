@@ -48,13 +48,14 @@ def produce(size):
     return s
 
 
-def printout(s):  # pragma: no cover
-    R = C = len(s)
-    RJ = int(log10(R*C)) + 1
-    for r in range(R):
-        for c in range(C):
-            print(str(s[r][c]).rjust(RJ), end=" ")
-        print()
+def printout(s):
+    if s:
+        R = C = len(s)
+        RJ = int(log10(R*C)) + 1
+        for r in range(R):
+            for c in range(C):
+                print(str(s[r][c]).rjust(RJ), end=" ")
+            print()
 
 
 if __name__ == "__main__":  # pragma: no cover
