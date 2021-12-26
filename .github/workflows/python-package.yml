@@ -39,4 +39,4 @@ jobs:
         poetry run pytest -v --color=yes --cov=squiral --cov-report term-missing tests/
     - name: Test with pre-commit
       run: |
-        poetry run pre-commit run --all-files
+        poetry run pre-commit run --color=always --all-files
