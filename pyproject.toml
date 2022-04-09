@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "squiral"
-version = "0.1.10"
+version = "0.1.11"
 description = "squiral - square spiral"
 authors = ["SADIK KUZU <sadikkuzu@hotmail.com>"]
 homepage = "https://github.com/sadikkuzu/squiral"
@@ -11,9 +11,9 @@ license = "MIT"
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2"
-pytest-cov = "^2.11.1"
-flake8 = "^3.9.0"
+pytest = "^7.1.1"
+pytest-cov = "^3.0.0"
+flake8 = "^4.0.1"
 pre-commit = "^2.16.0"
 
 [build-system]
