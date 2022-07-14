@@ -36,7 +36,7 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
     - name: Test with pytest
       run: |
-        poetry run pytest -v --color=yes --cov=squiral --cov-report term-missing tests/
+        poetry run pytest tests/
     - name: Test with pre-commit
       run: |
         poetry run pre-commit run --color=always --all-files
