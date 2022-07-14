@@ -13,7 +13,7 @@ def test_yn(A, direction):
     "row1, col1, direction, row2, col2",
     TestParams.data_next_point,
 )
-def test_ist(row1, col1, direction, row2, col2):
+def test_next_point(row1, col1, direction, row2, col2):
     assert next_point(row1, col1, direction) == (row2, col2)
 
 

@@ -1,0 +1,13 @@
+[flake8]
+# https://flake8.pycqa.org/en/latest/user/configuration.html
+exclude =
+    # No need to traverse our git directory
+    .git,
+    # There's no value in checking cache directories
+    __pycache__,
+    # No need to traverse virtual environment directory
+    venv,
+    # There's no value in checking pytest cache directory
+    .pytest_cache,
+max-complexity = 10
+max-line-length = 127
