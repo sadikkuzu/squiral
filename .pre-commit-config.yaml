@@ -20,6 +20,6 @@ repos:
     -   id: add-trailing-comma
         args: [--py36-plus]
 -   repo: https://github.com/crate-ci/typos
-    rev: v1.10.2
+    rev: typos-dict-v0.8.4
     hooks:
       - id: typos
