@@ -27,7 +27,9 @@ and not returning to the same row again.
 
 ### Install
 
-`pip install squiral`
+```
+pip install squiral
+```
 
 #### Usage
 
