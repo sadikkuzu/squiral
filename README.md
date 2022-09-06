@@ -27,7 +27,7 @@ and not returning to the same row again.
 
 ### Install
 
-In the shell: 
+In the shell:
 
 ```
 pip install squiral
