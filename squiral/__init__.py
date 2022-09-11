@@ -1,8 +1,6 @@
-from .main import (
-    main_cli,
-)
 from .squiral import printout
 from .squiral import produce
+from .main import main_cli  # noreorder
 
 __all__ = [
     "produce",
