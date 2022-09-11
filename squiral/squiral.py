@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # SADIK KUZU (c) 2021
-
 import sys
-from math import sqrt, log10
+from math import log10
+from math import sqrt
 
 directions = [["up", "right"], ["down", "left"]]
 
@@ -11,10 +11,10 @@ def to_where(A):  # here A is the number in the squiral
     if A == 1:
         return "right"
     initial = int(sqrt(A))
-    initial2 = initial ** 2
+    initial2 = initial**2
     if A == initial2:
-        return to_where(A-1)
-    middle = initial * (initial+1)
+        return to_where(A - 1)
+    middle = initial * (initial + 1)
     first = initial % 2
     second = 0 if A <= middle else 1
     return directions[first][second]  # and here is the next direction
@@ -36,7 +36,7 @@ def produce(size):
     if size < 1:
         return None
     s = [[0 for i in range(size)] for j in range(size)]
-    r = c = (size-1) // 2
+    r = c = (size - 1) // 2
     A = 1
     s[r][c] = A
     while size > 1:
@@ -51,7 +51,7 @@ def produce(size):
 def printout(s):
     if s:
         R = C = len(s)
-        RJ = int(log10(R*C)) + 1
+        RJ = int(log10(R * C)) + 1
         for r in range(R):
             for c in range(C):
                 print(str(s[r][c]).rjust(RJ), end=" ")

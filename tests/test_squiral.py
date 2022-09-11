@@ -1,6 +1,10 @@
 import pytest
-from squiral import produce, printout
-from squiral.squiral import next_point, to_where, directions
+
+from squiral import printout
+from squiral import produce
+from squiral.squiral import directions
+from squiral.squiral import next_point
+from squiral.squiral import to_where
 from tests.testdata_squiral import TestParams
 
 
