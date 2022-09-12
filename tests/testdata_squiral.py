@@ -1,7 +1,10 @@
+"""Test data for general cases."""
 import pytest
 
 
 class TestParams:
+    """Test class for test parameters."""
+
     data_to_where = [
         (1, "right"),
         (2, "down"),

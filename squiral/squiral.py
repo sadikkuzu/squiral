@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-# SADIK KUZU (c) 2021
+"""Main functions.
+
+Author: SADIK KUZU (c) 2021-2022
+"""
 import sys
 from math import log10
 from math import sqrt
@@ -7,7 +10,15 @@ from math import sqrt
 directions = [["up", "right"], ["down", "left"]]
 
 
-def to_where(A):  # here A is the number in the squiral
+def to_where(A: int) -> str:
+    """Get the number in the squiral and return back to next direction as a return value.
+
+    Args:
+        A (int): the number in the squiral
+
+    Returns:
+        str: next direction: "up", "right", "down", "left"
+    """
     if A == 1:
         return "right"
     initial = int(sqrt(A))
@@ -17,10 +28,20 @@ def to_where(A):  # here A is the number in the squiral
     middle = initial * (initial + 1)
     first = initial % 2
     second = 0 if A <= middle else 1
-    return directions[first][second]  # and here is the next direction
+    return directions[first][second]
 
 
-def next_point(row, col, direction):
+def next_point(row: int, col: int, direction: str) -> tuple:
+    """Return next point indices according to current indices and direction.
+
+    Args:
+        row (int): row index
+        col (int): column index
+        direction (str): next direction: "up", "right", "down", "left"
+
+    Returns:
+        tuple: next point indices
+    """
     if direction == "right":
         col += 1
     elif direction == "left":
@@ -32,7 +53,15 @@ def next_point(row, col, direction):
     return (row, col)
 
 
-def produce(size):
+def produce(size: int) -> list:
+    """Construct double array wrt square size.
+
+    Args:
+        size (int): square size
+
+    Returns:
+        list: squiral numbers in 2D array
+    """
     if size < 1:
         return None
     s = [[0 for i in range(size)] for j in range(size)]
@@ -48,7 +77,12 @@ def produce(size):
     return s
 
 
-def printout(s):
+def printout(s: list):
+    """Printout 2D array.
+
+    Args:
+        s (list): squiral numbers in 2D array
+    """
     if s:
         R = C = len(s)
         RJ = int(log10(R * C)) + 1
@@ -62,7 +96,7 @@ if __name__ == "__main__":  # pragma: no cover
     print("Welcome to Squiral!")
     print("Here is an example:")
     try:
-        size = int(sys.argv[1])  # try: python3 squiral.py 7
+        size = int(sys.argv[-1])
     except Exception:
         size = 5
     printout(produce(size))
