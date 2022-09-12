@@ -117,7 +117,7 @@ class TestParams:
     ]
 
     data_produce = [
-        pytest.param(0, None, id="squiral0"),
+        pytest.param(0, [], id="squiral0"),
         pytest.param(1, [[1]], id="squiral1"),
         pytest.param(2, [[1, 2], [4, 3]], id="squiral2"),
         pytest.param(3, [[7, 8, 9], [6, 1, 2], [5, 4, 3]], id="squiral3"),
