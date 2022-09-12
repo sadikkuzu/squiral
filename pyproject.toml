@@ -16,7 +16,6 @@ pytest = "^7.1.1"
 pytest-cov = "^3.0.0"
 flake8 = "^5.0.4"
 pre-commit = "^2.16.0"
-pytest-mock = "^3.8.2"
 
 [tool.poetry.scripts]
 squiral = "squiral.main:main_cli"
