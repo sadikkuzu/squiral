@@ -1,9 +1,17 @@
-def test_printout(mocker, capsys):
-    mocker.patch("sys.argv", return_value=[1])
-    from squiral import main_cli
+import sys
+from unittest.mock import patch
 
-    main_cli()
+import pytest
+
+from squiral import main_cli
+from tests.testdata_squiral import TestParams
+
+
+@pytest.mark.parametrize("size, output", TestParams.data_printout)
+def test_main_cli(capsys, size, output):
+    with patch.object(sys, "argv", ["squiral", size]):
+        main_cli()
 
     out, err = capsys.readouterr()
-    assert out == "1 \n"
+    assert out == output
     assert err == ""
