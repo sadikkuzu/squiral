@@ -63,7 +63,7 @@ def produce(size: int) -> list:
         list: squiral numbers in 2D array
     """
     if size < 1:
-        return None
+        return []
     s = [[0 for i in range(size)] for j in range(size)]
     r = c = (size - 1) // 2
     A = 1
