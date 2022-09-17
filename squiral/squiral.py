@@ -3,11 +3,13 @@
 
 Author: SADIK KUZU (c) 2021-2022
 """
-import sys
+from __future__ import annotations
+
+import argparse
 from math import log10
 from math import sqrt
 
-directions = [["up", "right"], ["down", "left"]]
+_directions = [["up", "right"], ["down", "left"]]
 
 
 def to_where(A: int) -> str:
@@ -28,7 +30,7 @@ def to_where(A: int) -> str:
     middle = initial * (initial + 1)
     first = initial % 2
     second = 0 if A <= middle else 1
-    return directions[first][second]
+    return _directions[first][second]
 
 
 def next_point(row: int, col: int, direction: str) -> tuple:
@@ -93,10 +95,14 @@ def printout(s: list):
 
 
 if __name__ == "__main__":  # pragma: no cover
+    parser = argparse.ArgumentParser()
+    parser.add_argument("size", help="squiral size")
+    args = parser.parse_args()
+
     print("Welcome to Squiral!")
     print("Here is an example:")
     try:
-        size = int(sys.argv[-1])
+        size = int(args.size)
     except Exception:
         size = 5
     printout(produce(size))
