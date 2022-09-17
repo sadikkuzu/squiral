@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 import pytest
 
 from squiral import printout
 from squiral import produce
-from squiral.squiral import directions
+from squiral.squiral import _directions
 from squiral.squiral import next_point
 from squiral.squiral import to_where
 from tests.testdata_squiral import TestParams
@@ -22,7 +24,7 @@ def test_next_point(row1, col1, direction, row2, col2):
 
 
 def test_directions():
-    assert directions is not None
+    assert _directions is not None
 
 
 @pytest.mark.parametrize(

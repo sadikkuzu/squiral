@@ -23,7 +23,8 @@ repos:
     rev: v3.8.2
     hooks:
     -   id: reorder-python-imports
-        args: [--py37-plus]
+        args: [--py37-plus, --add-import, 'from __future__ import annotations']
+        exclude: "__init__.py"
 -   repo: https://github.com/asottile/add-trailing-comma
     rev: v2.2.3
     hooks:
