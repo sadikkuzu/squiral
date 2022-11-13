@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "squiral"
-version = "0.2.1"
+version = "0.2.2"
 description = "squiral - square spiral"
 authors = ["SADIK KUZU <sadikkuzu@hotmail.com>"]
 homepage = "https://github.com/sadikkuzu/squiral"
