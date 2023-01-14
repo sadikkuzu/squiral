@@ -20,6 +20,17 @@ Here is an example:
 17 16 15 14 13
 ```
 
+**squiral** is a simple and lightweight Python library for generating square spiral patterns.<br/>
+With **squiral**, you can easily create a wide range of square spiral designs, from simple to complex.<br/>
+
+**squiral** is easy to use and integrate into existing projects,<br/>
+making it a great tool for data visualization, computer graphics, and other applications.<br/>
+With **squiral**, you can quickly and easily generate square spiral patterns<br/>
+that are both beautiful and functional.<br/>
+Whether you're working on a personal project or a professional one,<br/>
+**squiral**'s square spiral generator is the perfect tool<br/>
+for adding unique and visually striking designs to your work.
+
 The basic idea behind printing this matrix is<br/>
 to start from the middle of the matrix and then moving:<br/>
 `right` >> `down` >> `left` >> `up`<br/>
