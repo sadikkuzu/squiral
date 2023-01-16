@@ -16,7 +16,7 @@ repos:
     -   id: check-merge-conflict
     -   id: check-toml
 -   repo: https://github.com/crate-ci/typos
-    rev: v1.13.7
+    rev: typos-dict-v0.9.14
     hooks:
       - id: typos
 -   repo: https://github.com/asottile/reorder_python_imports
