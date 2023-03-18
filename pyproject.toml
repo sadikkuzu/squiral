@@ -9,13 +9,11 @@ license = "MIT"
 packages = [{include = "squiral"}]
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
+python = "^3.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.1"
 pytest-cov = "^4.0.0"
-flake8 = "^6.0.0"
-pre-commit = "^2.16.0"
 
 [tool.poetry.scripts]
 squiral = "squiral.main:main_cli"
