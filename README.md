@@ -9,6 +9,7 @@
 [![Publish Python Package](https://github.com/sadikkuzu/squiral/actions/workflows/python-publish.yml/badge.svg)](https://github.com/sadikkuzu/squiral/actions/workflows/python-publish.yml)
 <br/>
 [![Sourcegraph](https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=for-the-badge&logo=sourcegraph)](https://sourcegraph.com/github.com/sadikkuzu/squiral)
+[![codecov](https://codecov.io/gh/sadikkuzu/squiral/branch/main/graph/badge.svg?token=4KLW43HVVY)](https://codecov.io/gh/sadikkuzu/squiral)
 
 **squ**are sp**iral**
 
