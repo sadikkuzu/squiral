@@ -16,11 +16,11 @@ repos:
     -   id: check-merge-conflict
     -   id: check-toml
 -   repo: https://github.com/crate-ci/typos
-    rev: v1.15.0
+    rev: typos-dict-v0.10.1
     hooks:
       - id: typos
 -   repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.9.0
+    rev: v3.10.0
     hooks:
     -   id: reorder-python-imports
         args: [--py37-plus, --add-import, 'from __future__ import annotations']
