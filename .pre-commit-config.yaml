@@ -23,13 +23,12 @@ repos:
     rev: v3.10.0
     hooks:
     -   id: reorder-python-imports
-        args: [--py37-plus, --add-import, 'from __future__ import annotations']
+        args: [--py38-plus, --add-import, 'from __future__ import annotations']
         exclude: "__init__.py"
 -   repo: https://github.com/asottile/add-trailing-comma
     rev: v3.0.0
     hooks:
     -   id: add-trailing-comma
-        args: [--py36-plus]
 -   repo: https://github.com/psf/black
     rev: 23.3.0
     hooks:
@@ -38,6 +37,8 @@ repos:
     rev: 6.0.0
     hooks:
     -   id: flake8
+        additional_dependencies:
+          - flake8-bugbear
 -   repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.4.1
     hooks:
