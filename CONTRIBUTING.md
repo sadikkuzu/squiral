@@ -25,4 +25,4 @@ If you find a bug or want to request a new feature, please [open an issue](https
 
 ## Pull Request Template
 
-When you create a PR, please use the following template:
+When you create a PR, please use the following [template](.github/workflows/ISSUE_TEMPLATE/PULL_REQUEST_TEMPLATE.md)
