@@ -5,17 +5,17 @@ Example: Fixes #1234. See also #3456.
 
 **Description**
 
-Provide a brief description of your changes.
+<!-- Provide a brief description of your changes. -->
 
 
 **Steps to Test**
 
-Explain how to test your changes (if necessary).
+<!-- Explain how to test your changes (if necessary). -->
 
 
 **Screenshots (if applicable)**
 
-Add screenshots to showcase your changes.
+<!-- Add screenshots to showcase your changes. -->
 
 
 **Checklist**
