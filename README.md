@@ -92,4 +92,4 @@ optional arguments:
 ### Contributing
 
 To learn more about making a contribution to squiral, please see our
-[Contributing guide](CONTRIBUTING.md)
+[Contributing guide](CONTRIBUTING.md).
