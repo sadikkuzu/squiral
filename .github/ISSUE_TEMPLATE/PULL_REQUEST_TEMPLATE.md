@@ -1,6 +1,6 @@
 **Reference Issues/PRs**
 
-Example: Fixes #1234. See also #3456.
+<!-- Example: Fixes #1234. See also #3456. -->
 
 
 **Description**
