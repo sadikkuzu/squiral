@@ -88,3 +88,8 @@ optional arguments:
 17 16 15 14 13
 >>>
 ```
+
+### Contributing
+
+To learn more about making a contribution to squiral, please see our
+[Contributing guide](CONTRIBUTING.md)
