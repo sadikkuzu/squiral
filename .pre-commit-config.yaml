@@ -16,7 +16,7 @@ repos:
     -   id: check-merge-conflict
     -   id: check-toml
 -   repo: https://github.com/crate-ci/typos
-    rev: v1.16.23
+    rev: v1.17.1
     hooks:
       - id: typos
 -   repo: https://github.com/asottile/reorder-python-imports
@@ -30,17 +30,17 @@ repos:
     hooks:
     -   id: add-trailing-comma
 -   repo: https://github.com/psf/black
-    rev: 23.11.0
+    rev: 23.12.1
     hooks:
     -   id: black
 -   repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
+    rev: 7.0.0
     hooks:
     -   id: flake8
         additional_dependencies:
           - flake8-bugbear
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.7.1
+    rev: v1.8.0
     hooks:
     -   id: mypy
         additional_dependencies: [types-all]
