@@ -1,4 +1,5 @@
 """Squiral package main"""
+
 from __future__ import annotations
 
 from main import main_cli
