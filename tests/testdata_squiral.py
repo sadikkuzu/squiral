@@ -1,4 +1,5 @@
 """Test data for general cases."""
+
 from __future__ import annotations
 
 import pytest
