@@ -93,3 +93,9 @@ optional arguments:
 
 To learn more about making a contribution to squiral, please see our
 [Contributing guide](CONTRIBUTING.md)
+
+#### Many Thanks To Our Contributors
+
+ <a href = "https://github.com/sadikkuzu/squiral/graphs/contributors">
+   <img src = "https://contrib.rocks/image?repo=sadikkuzu/squiral"/>
+ </a>
