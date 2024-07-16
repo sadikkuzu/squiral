@@ -16,7 +16,7 @@ repos:
     -   id: check-merge-conflict
     -   id: check-toml
 -   repo: https://github.com/crate-ci/typos
-    rev: v1.23.1
+    rev: typos-v0.10.26
     hooks:
       - id: typos
 -   repo: https://github.com/asottile/add-trailing-comma
