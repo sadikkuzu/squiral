@@ -9,7 +9,6 @@ Author: SADIK KUZU (c) 2021-2022
 from __future__ import annotations
 
 import argparse
-from math import log10
 from math import sqrt
 from typing import List, Tuple
 
@@ -34,17 +33,17 @@ def get_next_direction(number: int) -> str:
     """
     if number == 1:
         return "right"
-    
+
     initial = int(sqrt(number))
     initial_squared = initial**2
-    
+
     if number == initial_squared:
         return get_next_direction(number - 1)
-    
+
     middle = initial * (initial + 1)
     first_index = initial % 2
     second_index = 0 if number <= middle else 1
-    
+
     return _DIRECTIONS[first_index][second_index]
 
 
@@ -72,12 +71,12 @@ def get_next_point(row: int, col: int, direction: str) -> Tuple[int, int]:
         "right": (0, 1),
         "left": (0, -1),
         "up": (-1, 0),
-        "down": (1, 0)
+        "down": (1, 0),
     }
-    
+
     if direction not in direction_map:
         raise ValueError(f"Invalid direction: {direction}")
-    
+
     row_delta, col_delta = direction_map[direction]
     return (row + row_delta, col + col_delta)
 
@@ -101,25 +100,25 @@ def generate_squiral(size: int) -> List[List[int]]:
     """
     if size < 1:
         return []
-    
+
     # Initialize the grid with zeros
     spiral_grid = [[0 for _ in range(size)] for _ in range(size)]
-    
+
     # Start from the center
     current_row = current_col = (size - 1) // 2
     current_number = 1
     spiral_grid[current_row][current_col] = current_number
-    
+
     if size == 1:
         return spiral_grid
-    
+
     # Generate the spiral
     while current_number < size**2:
         direction = get_next_direction(current_number)
         current_row, current_col = get_next_point(current_row, current_col, direction)
         current_number += 1
         spiral_grid[current_row][current_col] = current_number
-    
+
     return spiral_grid
 
 
@@ -138,11 +137,11 @@ def print_squiral(spiral_grid: List[List[int]]) -> None:
     """
     if not spiral_grid:
         return
-    
+
     rows = cols = len(spiral_grid)
     max_number = rows * cols
     field_width = len(str(max_number))
-    
+
     for row in range(rows):
         for col in range(cols):
             print(str(spiral_grid[row][col]).rjust(field_width), end=" ")
@@ -152,18 +151,18 @@ def print_squiral(spiral_grid: List[List[int]]) -> None:
 def main() -> None:
     """Main function for command-line usage."""
     parser = argparse.ArgumentParser(
-        description="Generate and display a square spiral of numbers"
+        description="Generate and display a square spiral of numbers",
     )
     parser.add_argument(
-        "size", 
+        "size",
         type=int,
-        help="Size of the square spiral (positive integer)"
+        help="Size of the square spiral (positive integer)",
     )
     args = parser.parse_args()
 
     print("Welcome to Squiral!")
     print("Here is your spiral:")
-    
+
     try:
         if args.size <= 0:
             raise ValueError("Size must be a positive integer")
