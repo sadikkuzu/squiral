@@ -148,7 +148,7 @@ def print_squiral(spiral_grid: List[List[int]]) -> None:
         print()  # New line after each row
 
 
-def main() -> None:
+def main() -> None:  # pragma: no cover
     """Main function for command-line usage."""
     parser = argparse.ArgumentParser(
         description="Generate and display a square spiral of numbers",

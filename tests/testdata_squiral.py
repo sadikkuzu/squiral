@@ -132,9 +132,3 @@ class TestParams:
         pytest.param(2, "1 2 \n4 3 \n", id="squiral2"),
         pytest.param(3, "7 8 9 \n6 1 2 \n5 4 3 \n", id="squiral3"),
     ]
-
-    data_main_cli = [
-        pytest.param(1, "1 \n", id="squiral1"),
-        pytest.param(2, "1 2 \n4 3 \n", id="squiral2"),
-        pytest.param(3, "7 8 9 \n6 1 2 \n5 4 3 \n", id="squiral3"),
-    ]

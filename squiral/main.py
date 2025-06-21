@@ -49,7 +49,7 @@ def main_cli(argv: Optional[Sequence[str]] = None) -> int:
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
         return 1
-    except Exception as e:
+    except Exception as e:  # pragma: no cover
         print(f"Unexpected error: {e}", file=sys.stderr)
         return 1
 

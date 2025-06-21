@@ -6,9 +6,11 @@ from squiral import main_cli
 from tests.testdata_squiral import TestParams
 
 
-@pytest.mark.parametrize("size, output", TestParams.data_main_cli)
+@pytest.mark.parametrize("size, output", TestParams.data_printout)
 def test_main_cli_success(capsys, size, output):
     """Test main_cli with valid input."""
+    if size <= 0:
+        pytest.skip("It is not valid input for main_cli_success")
     assert main_cli([str(size)]) == 0
 
     out, err = capsys.readouterr()
