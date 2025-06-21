@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""CLI functions.
+"""CLI functions for the squiral package.
+
+This module provides command-line interface functionality for generating
+and displaying square spirals.
 
 Author: SADIK KUZU (c) 2021-2022
 """
@@ -10,21 +13,41 @@ import sys
 from typing import Optional
 from typing import Sequence
 
-from squiral import printout
-from squiral import produce
+from squiral import generate_squiral
+from squiral import print_squiral
 
 
 def main_cli(argv: Optional[Sequence[str]] = None) -> int:
-    """Auxiliary function for CLI."""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("size", help="squiral size")
+    """Main CLI function for the squiral package.
+    
+    Args:
+        argv: Command line arguments. If None, uses sys.argv.
+    
+    Returns:
+        Exit code: 0 for success, 1 for error.
+    """
+    parser = argparse.ArgumentParser(
+        description="Generate and display a square spiral of numbers"
+    )
+    parser.add_argument(
+        "size", 
+        type=int,
+        help="Size of the square spiral (positive integer)"
+    )
     args = parser.parse_args(argv)
 
     try:
-        printout(produce(int(args.size)))
-    except ValueError:
-        print("Squiral size must be a positive integer!", file=sys.stderr)
+        if args.size <= 0:
+            raise ValueError("Size must be a positive integer")
+        spiral = generate_squiral(args.size)
+        print_squiral(spiral)
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
         return 1
+    except Exception as e:
+        print(f"Unexpected error: {e}", file=sys.stderr)
+        return 1
+    
     return 0
 
 
