@@ -34,13 +34,18 @@ def main_cli(argv: Optional[Sequence[str]] = None) -> int:
         type=int,
         help="Size of the square spiral (positive integer)"
     )
-    args = parser.parse_args(argv)
+    
+    try:
+        args = parser.parse_args(argv)
+    except SystemExit as e:
+        # argparse calls sys.exit on error, convert to return code
+        return e.code if e.code is not None else 1
 
     try:
         if args.size <= 0:
             raise ValueError("Size must be a positive integer")
-        spiral = generate_squiral(args.size)
-        print_squiral(spiral)
+        squiral = generate_squiral(args.size)
+        print_squiral(squiral)
     except ValueError as e:
         print(f"Error: {e}", file=sys.stderr)
         return 1
