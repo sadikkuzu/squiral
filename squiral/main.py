@@ -19,22 +19,22 @@ from squiral import print_squiral
 
 def main_cli(argv: Optional[Sequence[str]] = None) -> int:
     """Main CLI function for the squiral package.
-    
+
     Args:
         argv: Command line arguments. If None, uses sys.argv.
-    
+
     Returns:
         Exit code: 0 for success, 1 for error.
     """
     parser = argparse.ArgumentParser(
-        description="Generate and display a square spiral of numbers"
+        description="Generate and display a square spiral of numbers",
     )
     parser.add_argument(
-        "size", 
+        "size",
         type=int,
-        help="Size of the square spiral (positive integer)"
+        help="Size of the square spiral (positive integer)",
     )
-    
+
     try:
         args = parser.parse_args(argv)
     except SystemExit as e:
@@ -52,7 +52,7 @@ def main_cli(argv: Optional[Sequence[str]] = None) -> int:
     except Exception as e:
         print(f"Unexpected error: {e}", file=sys.stderr)
         return 1
-    
+
     return 0
 
 

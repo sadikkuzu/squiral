@@ -17,7 +17,7 @@ next_point = get_next_point
 
 __all__ = [
     "generate_squiral",
-    "print_squiral", 
+    "print_squiral",
     "get_next_direction",
     "get_next_point",
     "main_cli",
