@@ -1,108 +1,177 @@
 #!/usr/bin/env python3
-"""Main functions.
+"""Main functions for generating square spirals.
+
+This module provides functions to generate and display square spirals,
+where numbers are arranged in a spiral pattern starting from the center.
 
 Author: SADIK KUZU (c) 2021-2022
 """
 from __future__ import annotations
 
 import argparse
-from math import log10
 from math import sqrt
+from typing import List, Tuple
 
-_directions = [["up", "right"], ["down", "left"]]
+# Direction mappings for spiral generation
+_DIRECTIONS = [["up", "right"], ["down", "left"]]
 
 
-def to_where(A: int) -> str:
-    """Get the number in the squiral and return back to next direction as a return value.
+def get_next_direction(number: int) -> str:
+    """Get the next direction for a given number in the spiral.
 
     Args:
-        A (int): the number in the squiral
+        number: The current number in the spiral.
 
     Returns:
-        str: next direction: "up", "right", "down", "left"
+        The next direction: "up", "right", "down", or "left".
+
+    Example:
+        >>> get_next_direction(1)
+        'right'
+        >>> get_next_direction(2)
+        'up'
     """
-    if A == 1:
+    if number == 1:
         return "right"
-    initial = int(sqrt(A))
-    initial2 = initial**2
-    if A == initial2:
-        return to_where(A - 1)
+
+    initial = int(sqrt(number))
+    initial_squared = initial**2
+
+    if number == initial_squared:
+        return get_next_direction(number - 1)
+
     middle = initial * (initial + 1)
-    first = initial % 2
-    second = 0 if A <= middle else 1
-    return _directions[first][second]
+    first_index = initial % 2
+    second_index = 0 if number <= middle else 1
+
+    return _DIRECTIONS[first_index][second_index]
 
 
-def next_point(row: int, col: int, direction: str) -> tuple:
-    """Return next point indices according to current indices and direction.
+def get_next_point(row: int, col: int, direction: str) -> Tuple[int, int]:
+    """Calculate the next point coordinates based on current position and direction.
 
     Args:
-        row (int): row index
-        col (int): column index
-        direction (str): next direction: "up", "right", "down", "left"
+        row: Current row index.
+        col: Current column index.
+        direction: Movement direction ("up", "right", "down", or "left").
 
     Returns:
-        tuple: next point indices
+        A tuple containing the next (row, col) coordinates.
+
+    Raises:
+        ValueError: If direction is not one of the valid directions.
+
+    Example:
+        >>> get_next_point(1, 1, "right")
+        (1, 2)
+        >>> get_next_point(1, 1, "up")
+        (0, 1)
     """
-    if direction == "right":
-        col += 1
-    elif direction == "left":
-        col -= 1
-    elif direction == "up":
-        row -= 1
-    elif direction == "down":
-        row += 1
-    return (row, col)
+    direction_map = {
+        "right": (0, 1),
+        "left": (0, -1),
+        "up": (-1, 0),
+        "down": (1, 0),
+    }
+
+    if direction not in direction_map:
+        raise ValueError(f"Invalid direction: {direction}")
+
+    row_delta, col_delta = direction_map[direction]
+    return (row + row_delta, col + col_delta)
 
 
-def produce(size: int) -> list:
-    """Construct double array wrt square size.
+def generate_squiral(size: int) -> List[List[int]]:
+    """Generate a square spiral of the given size.
+
+    Creates a 2D array where numbers are arranged in a spiral pattern
+    starting from the center with 1 and spiraling outward.
 
     Args:
-        size (int): square size
+        size: The side length of the square spiral.
 
     Returns:
-        list: squiral numbers in 2D array
+        A 2D list containing the spiral numbers.
+        Returns empty list if size < 1.
+
+    Example:
+        >>> generate_squiral(3)
+        [[7, 8, 9], [6, 1, 2], [5, 4, 3]]
     """
     if size < 1:
         return []
-    s = [[0 for i in range(size)] for j in range(size)]
-    r = c = (size - 1) // 2
-    A = 1
-    s[r][c] = A
-    while size > 1:
-        r, c = next_point(r, c, to_where(A))
-        A += 1
-        s[r][c] = A
-        if A == size**2:
-            return s
-    return s
+
+    # Initialize the grid with zeros
+    spiral_grid = [[0 for _ in range(size)] for _ in range(size)]
+
+    # Start from the center
+    current_row = current_col = (size - 1) // 2
+    current_number = 1
+    spiral_grid[current_row][current_col] = current_number
+
+    if size == 1:
+        return spiral_grid
+
+    # Generate the spiral
+    while current_number < size**2:
+        direction = get_next_direction(current_number)
+        current_row, current_col = get_next_point(current_row, current_col, direction)
+        current_number += 1
+        spiral_grid[current_row][current_col] = current_number
+
+    return spiral_grid
 
 
-def printout(s: list):
-    """Printout 2D array.
+def print_squiral(spiral_grid: List[List[int]]) -> None:
+    """Print the spiral grid in a formatted way.
 
     Args:
-        s (list): squiral numbers in 2D array
+        spiral_grid: A 2D list containing the spiral numbers.
+
+    Example:
+        >>> grid = [[7, 8, 9], [6, 1, 2], [5, 4, 3]]
+        >>> print_squiral(grid)
+        7 8 9
+        6 1 2
+        5 4 3
     """
-    if s:
-        R = C = len(s)
-        RJ = int(log10(R * C)) + 1
-        for r in range(R):
-            for c in range(C):
-                print(str(s[r][c]).rjust(RJ), end=" ")
-            print()
+    if not spiral_grid:
+        return
+
+    rows = cols = len(spiral_grid)
+    max_number = rows * cols
+    field_width = len(str(max_number))
+
+    for row in range(rows):
+        for col in range(cols):
+            print(str(spiral_grid[row][col]).rjust(field_width), end=" ")
+        print()  # New line after each row
 
 
-if __name__ == "__main__":  # pragma: no cover
-    parser = argparse.ArgumentParser()
-    parser.add_argument("size", help="squiral size")
+def main() -> None:  # pragma: no cover
+    """Main function for command-line usage."""
+    parser = argparse.ArgumentParser(
+        description="Generate and display a square spiral of numbers",
+    )
+    parser.add_argument(
+        "size",
+        type=int,
+        help="Size of the square spiral (positive integer)",
+    )
     args = parser.parse_args()
 
     print("Welcome to Squiral!")
-    print("Here is an example:")
+    print("Here is your spiral:")
+
     try:
-        size = int(args.size)
-    except Exception:
-        size = 5
-    printout(produce(size))
+        if args.size <= 0:
+            raise ValueError("Size must be a positive integer")
+        spiral = generate_squiral(args.size)
+        print_squiral(spiral)
+    except ValueError as e:
+        print(f"Error: {e}")
+        return
+
+
+if __name__ == "__main__":  # pragma: no cover
+    main()

@@ -1,8 +1,12 @@
-"""Squiral package main"""
+"""Squiral package main entry point.
+
+This module allows the squiral package to be executed as a module
+using 'python -m squiral'.
+"""
 
 from __future__ import annotations
 
-from main import main_cli
+from .main import main_cli
 
 
 if __name__ == "__main__":
