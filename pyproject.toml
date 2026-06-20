@@ -12,7 +12,7 @@ packages = [{include = "squiral"}]
 python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.0.0"
+pytest = ">=8,<10"
 pytest-cov = "^5.0.0"
 
 [tool.poetry.scripts]
