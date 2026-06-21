@@ -15,6 +15,8 @@ If `pre-commit` isn’t installed, install it first (e.g. `python -m pip install
 
 If `poetry` is missing or `poetry run pytest` fails, create/activate a local venv and install the test deps, then run pytest:
 
+```bash
 python -m venv .venv && source .venv/bin/activate && python -m pip install -U pip && python -m pip install -e . && python -m pip install "pytest>=8,<10" pytest-cov && python -m pytest --cov=squiral --cov-report term-missing tests/
+```
 
 Report a concise pass/fail summary per step. On any failure, quote the exact error and propose the fix before editing.
