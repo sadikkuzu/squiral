@@ -11,10 +11,9 @@ Note: black, flake8, and mypy run as **pre-commit hooks**. If the `pre-commit` r
    Covers black, flake8 (+ bugbear), mypy, and the other configured hooks in one pass.
 2. **Tests + coverage** — run pytest in a local venv:
    ```bash
-   # ensure virtualenv is installed
-   python -m pip show virtualenv >/dev/null 2>&1 || python -m pip install virtualenv
-   # create the venv/ dir only if it doesn't already exist
-   [ -d venv ] || virtualenv venv
+   # create the venv/ dir only if it doesn't already exist (stdlib venv)
+   [ -d venv ] || python -m venv venv
+   # activate (POSIX shells)
    source venv/bin/activate
    python -m pip install "pytest>=8,<10" pytest-cov
    python -m pytest --cov=squiral --cov-report term-missing tests/
