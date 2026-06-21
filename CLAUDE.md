@@ -8,13 +8,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- Install deps: `poetry install`
+- Install deps: `poetry install` (installs `pytest` + `pytest-cov` only — black/flake8/mypy are NOT Poetry deps; they live in pre-commit).
 - Test + coverage: `poetry run pytest --cov=squiral --cov-report term-missing tests/`
 - Single test: `poetry run pytest -v tests/test_squiral.py::test_produce`
-- Lint (mirrors CI): `flake8 . --select=E9,F63,F7,F82 --show-source` then `flake8 . --exit-zero`
-- All hooks at once: `pre-commit run --all-files` (black, flake8 + bugbear, mypy, typos, add-trailing-comma)
+- Lint + format + types: `pre-commit run --all-files` (black, flake8 + bugbear, mypy, typos, add-trailing-comma).
+- CI lint only: `flake8 . --select=E9,F63,F7,F82 --show-source` then `flake8 . --exit-zero` (CI pip-installs flake8 separately).
 
-`/check` runs the full local gate (black → flake8 → mypy → pytest) in one step.
+CI (`python-package.yml`) runs **flake8 + pytest only**. `/check` runs the fuller local gate (black → flake8 → mypy → pytest) in one step.
 
 ## Style
 
@@ -31,4 +31,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Release (gotcha)
 
-Tagging `vX.Y.Z` triggers a GitHub Actions workflow that builds with Poetry and publishes to PyPI (`twine`, `TWINE_PASSWORD` secret). Only tag a release when you intend to publish.
+Publishing a **GitHub Release** (`python-publish.yml`, `on: release: published`) builds with Poetry and uploads to PyPI via `twine`. The token is the `PYPI_TOKEN` secret, passed as the `TWINE_PASSWORD` env var. A bare `git tag` push does NOT publish — only a published Release does. Only cut a Release when you intend to publish.

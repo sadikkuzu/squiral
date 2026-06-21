@@ -1,25 +1,22 @@
 ---
 name: check
-description: Run the full local quality gate for the squiral repo — black, flake8, mypy, and pytest with coverage, mirroring CI. Use before opening a PR or when the user asks to verify changes.
+description: Run the local quality gate for the squiral repo — black, flake8, mypy (via pre-commit) plus pytest with coverage. Use before opening a PR or when the user asks to verify changes.
 ---
 
-Run the same checks CI runs, in order. Stop at the first failure, report it, and offer to fix.
+Run the local quality gate, in order. Stop at the first failure, report it, and offer to fix.
 
-1. **Format** — `poetry run black squiral tests`
-2. **Lint** — `poetry run flake8 . --select=E9,F63,F7,F82 --show-source` then `poetry run flake8 . --exit-zero`
-3. **Types** — `poetry run mypy squiral`
-4. **Tests + coverage** — `poetry run pytest --cov=squiral --cov-report term-missing tests/`
+Note: black, flake8, and mypy are **pre-commit hooks**, not Poetry deps — `poetry run black/flake8/mypy` will fail in a clean `poetry install` env. Only `pytest`/`pytest-cov` are installed by Poetry. CI itself runs only flake8 + pytest; this gate is the fuller local check.
 
-## Fallbacks when Poetry isn't on PATH
+1. **Format + lint + types** — `pre-commit run --all-files`
+   Covers black, flake8 (+ bugbear), mypy, and the other configured hooks in one pass.
+2. **Tests + coverage** — `poetry run pytest --cov=squiral --cov-report term-missing tests/`
 
-If `poetry` is missing or `poetry run <tool>` fails:
+## Fallback when Poetry isn't on PATH
 
-- **Steps 1–3 (black, flake8, mypy):** run `pre-commit run --all-files` — the hooks cover all three.
-- **Step 4 (pytest):** activate the project venv first, then run pytest from it (the runner lives there, not in the Poetry/global env):
-  ```bash
-  source ./venv/bin/activate && python -m pytest --cov=squiral --cov-report term-missing tests/
-  ```
+If `poetry` is missing or `poetry run pytest` fails, activate the project venv and run pytest from it (the runner lives there, not in the global env):
 
-Note: an `rtk` proxy may collapse pytest output to a bare `Pytest: No tests collected` line. That is filtered output, not the real result — re-run the exact command prefixed with `rtk proxy` (e.g. `rtk proxy python -m pytest ...`) to see the true pass/fail and coverage.
+```bash
+source ./venv/bin/activate && python -m pytest --cov=squiral --cov-report term-missing tests/
+```
 
 Report a concise pass/fail summary per step. On any failure, quote the exact error and propose the fix before editing.
