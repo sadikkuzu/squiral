@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Lint + format + types: `pre-commit run --all-files` (black, flake8 + bugbear, mypy, typos, add-trailing-comma).
 - CI lint only: `flake8 . --select=E9,F63,F7,F82 --show-source` then `flake8 . --exit-zero` (CI pip-installs flake8 separately).
 
-CI (`python-package.yml`) runs **flake8 + pytest only**. `/check` runs the fuller local gate (black → flake8 → mypy → pytest) in one step.
+CI (`python-package.yml`) runs **flake8 + pytest only**. `/check` runs the fuller local gate (black → flake8 → mypy via pre-commit, then pytest).
 
 ## Style
 
