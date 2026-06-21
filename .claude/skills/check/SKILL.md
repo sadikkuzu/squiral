@@ -15,7 +15,7 @@ Note: black, flake8, and mypy run as **pre-commit hooks**. If the `pre-commit` r
    [ -d venv ] || python -m venv venv
    # activate (POSIX shells)
    source venv/bin/activate
-   python -m pip install "pytest>=8,<10" pytest-cov
+   python -m pip install "pytest>=8,<10" "pytest-cov>=5,<6"
    python -m pytest --cov=squiral --cov-report term-missing tests/
    ```
 
