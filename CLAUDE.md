@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- Install deps: `poetry install` (installs `pytest` + `pytest-cov` only — black/flake8/mypy are NOT Poetry deps; they live in pre-commit).
+- Install deps: `poetry install` (installs `pytest` + `pytest-cov` only — install `pre-commit` separately for black/flake8/mypy hooks).
 - Test + coverage: `poetry run pytest --cov=squiral --cov-report term-missing tests/`
 - Single test: `poetry run pytest -v tests/test_squiral.py::test_produce`
 - Lint + format + types: `pre-commit run --all-files` (black, flake8 + bugbear, mypy, typos, add-trailing-comma).

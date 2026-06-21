@@ -5,18 +5,16 @@ description: Run the local quality gate for the squiral repo — black, flake8, 
 
 Run the local quality gate, in order. Stop at the first failure, report it, and offer to fix.
 
-Note: black, flake8, and mypy are **pre-commit hooks**, not Poetry deps — `poetry run black/flake8/mypy` will fail in a clean `poetry install` env. Only `pytest`/`pytest-cov` are installed by Poetry. CI itself runs only flake8 + pytest; this gate is the fuller local check.
+Note: `pre-commit` (and black/flake8/mypy) are **pre-commit hooks**, not Poetry deps — `poetry run black/flake8/mypy` will fail in a clean `poetry install` env.
+If `pre-commit` isn’t installed, install it first (e.g. `python -m pip install pre-commit` or `pipx install pre-commit`). Only `pytest`/`pytest-cov` are installed by Poetry. CI itself runs only flake8 + pytest; this gate is the fuller local check.
 
 1. **Format + lint + types** — `pre-commit run --all-files`
    Covers black, flake8 (+ bugbear), mypy, and the other configured hooks in one pass.
-2. **Tests + coverage** — `poetry run pytest --cov=squiral --cov-report term-missing tests/`
 
 ## Fallback when Poetry isn't on PATH
 
-If `poetry` is missing or `poetry run pytest` fails, activate the project venv and run pytest from it (the runner lives there, not in the global env):
+If `poetry` is missing or `poetry run pytest` fails, create/activate a local venv and install the test deps, then run pytest:
 
-```bash
-source ./venv/bin/activate && python -m pytest --cov=squiral --cov-report term-missing tests/
-```
+python -m venv .venv && source .venv/bin/activate && python -m pip install -U pip && python -m pip install -e . && python -m pip install "pytest>=8,<10" pytest-cov && python -m pytest --cov=squiral --cov-report term-missing tests/
 
 Report a concise pass/fail summary per step. On any failure, quote the exact error and propose the fix before editing.
