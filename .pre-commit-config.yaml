@@ -16,7 +16,7 @@ repos:
     -   id: check-merge-conflict
     -   id: check-toml
 -   repo: https://github.com/adhtruong/mirrors-typos
-    rev: v1.47.2
+    rev: v1.48.0
     hooks:
       - id: typos
 -   repo: https://github.com/asottile/add-trailing-comma
@@ -34,6 +34,6 @@ repos:
         additional_dependencies:
           - flake8-bugbear
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v2.1.0
+    rev: v2.3.0
     hooks:
     -   id: mypy
