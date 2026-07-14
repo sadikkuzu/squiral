@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`squiral` — a pure-Python library (stdlib only, no runtime deps) that generates square spiral matrices. Source in `squiral/`, tests in `tests/`. Managed with Poetry.
+`squiral` — a pure-Python library + CLI (stdlib only, no runtime deps) that generates square spiral matrices. Source in `squiral/`, tests in `tests/`. Managed with Poetry.
+
+Public API: `produce(size: int) -> list` (build matrix), `printout(s)` (render it), `main_cli(argv)` (CLI entry). Run the CLI as `poetry run squiral <size>` or `python -m squiral <size>`.
 
 ## Commands
 
