@@ -11,6 +11,7 @@ from math import log10
 from math import sqrt
 
 _directions = [["up", "right"], ["down", "left"]]
+_deltas = {"right": (0, 1), "left": (0, -1), "up": (-1, 0), "down": (1, 0)}
 
 
 def to_where(A: int) -> str:
@@ -34,7 +35,7 @@ def to_where(A: int) -> str:
     return _directions[first][second]
 
 
-def next_point(row: int, col: int, direction: str) -> tuple:
+def next_point(row: int, col: int, direction: str) -> tuple[int, int]:
     """Return next point indices according to current indices and direction.
 
     Args:
@@ -45,15 +46,8 @@ def next_point(row: int, col: int, direction: str) -> tuple:
     Returns:
         tuple: next point indices
     """
-    if direction == "right":
-        col += 1
-    elif direction == "left":
-        col -= 1
-    elif direction == "up":
-        row -= 1
-    elif direction == "down":
-        row += 1
-    return (row, col)
+    dr, dc = _deltas.get(direction, (0, 0))
+    return (row + dr, col + dc)
 
 
 def produce(size: int) -> list:
@@ -67,20 +61,19 @@ def produce(size: int) -> list:
     """
     if size < 1:
         return []
-    s = [[0 for i in range(size)] for j in range(size)]
+    s = [[0] * size for _ in range(size)]
     r = c = (size - 1) // 2
+    last = size * size
     A = 1
     s[r][c] = A
-    while size > 1:
+    while A < last:
         r, c = next_point(r, c, to_where(A))
         A += 1
         s[r][c] = A
-        if A == size**2:
-            return s
     return s
 
 
-def printout(s: list):
+def printout(s: list) -> None:
     """Printout 2D array.
 
     Args:
