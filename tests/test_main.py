@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import subprocess
 import sys
+from pathlib import Path
 
 import pytest
 
@@ -32,6 +33,8 @@ def test_python_m_squiral():
         [sys.executable, "-m", "squiral", "1"],
         capture_output=True,
         text=True,
+        cwd=Path(__file__).resolve().parent.parent,
+        timeout=30,
     )
     assert result.returncode == 0
     assert result.stdout == "1 \n"
