@@ -9,14 +9,9 @@ Note: black, flake8, and mypy run as **pre-commit hooks**. If the `pre-commit` r
 
 1. **Format + lint + types** — `pre-commit run --all-files`
    Covers black, flake8 (+ bugbear), mypy, and the other configured hooks in one pass.
-2. **Tests + coverage** — run pytest in a local venv:
+2. **Tests + coverage** — run pytest through uv (`uv sync` creates `.venv/` from `uv.lock` on first run):
    ```bash
-   # create the venv/ dir only if it doesn't already exist (stdlib venv)
-   [ -d venv ] || python -m venv venv
-   # activate (POSIX shells)
-   source venv/bin/activate
-   python -m pip install "pytest>=8,<10" "pytest-cov>=5,<6"
-   python -m pytest --cov=squiral --cov-report term-missing tests/
+   uv run pytest --cov=squiral --cov-report term-missing tests/
    ```
 
 Report a concise pass/fail summary per step. On any failure, quote the exact error and propose the fix before editing.
