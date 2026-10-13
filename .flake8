@@ -7,6 +7,7 @@ exclude =
     __pycache__,
     # No need to traverse virtual environment directory
     venv,
+    .venv,
     # There's no value in checking pytest cache directory
     .pytest_cache,
 max-complexity = 10

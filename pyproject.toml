@@ -1,26 +1,40 @@
-[tool.poetry]
+[project]
 name = "squiral"
 version = "0.6.1"
 description = "squiral - square spiral"
-authors = ["SADIK KUZU <sadikkuzu@hotmail.com>"]
-homepage = "https://github.com/sadikkuzu/squiral"
+authors = [{ name = "SADIK KUZU", email = "sadikkuzu@hotmail.com" }]
 readme = "README.md"
 license = "MIT"
-packages = [{include = "squiral"}]
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
+[project.urls]
+Homepage = "https://github.com/sadikkuzu/squiral"
 
-[tool.poetry.group.dev.dependencies]
-pytest = ">=8,<10"
-pytest-cov = "^7.0.0"
+[project.scripts]
+squiral = "squiral.main:main_cli"
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<10",
+    "pytest-cov>=7,<8",
+]
+
+[tool.uv.build-backend]
+module-root = ""
 
 [tool.coverage.run]
 patch = ["subprocess"]
 
-[tool.poetry.scripts]
-squiral = "squiral.main:main_cli"
-
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.13,<0.14"]
+build-backend = "uv_build"

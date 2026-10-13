@@ -25,17 +25,16 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: set PY
       run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
+    - name: Install uv
+      uses: astral-sh/setup-uv@v10.2.0
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip setuptools
-        pip install poetry flake8
-        poetry install
+      run: uv sync --locked
     - name: Lint with flake8
       run: |
-        flake8 . --select=E9,F63,F7,F82 --show-source
+        uvx flake8 . --select=E9,F63,F7,F82 --show-source
         # stop the build if there are Python syntax errors or undefined names
-        flake8 . --exit-zero
+        uvx flake8 . --exit-zero
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
     - name: Test with pytest
       run: |
-        poetry run pytest --cov=squiral --cov-report term-missing tests/
+        uv run pytest --cov=squiral --cov-report term-missing tests/
