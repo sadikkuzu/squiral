@@ -28,9 +28,15 @@ CI (`python-package.yml`) runs **flake8 + pytest only**. `/check` runs the fulle
 
 - Branch from `main` as `feature/<issue#>-slug` (e.g. `feature/165-add-3-13`).
 - Conventional Commits for subjects (`feat:`, `fix:`, `chore:`).
-- PR required — never push directly to `main`.
+- PR required — never push directly to `main`. Only exception: the release version-bump commit (see Release).
 - Run `pre-commit run --all-files` and make it pass before opening a PR.
 
 ## Release (gotcha)
 
 Publishing a **GitHub Release** (`python-publish.yml`, `on: release: published`) builds with Poetry and uploads to PyPI via `twine`. The token is the `PYPI_TOKEN` secret, passed as the `TWINE_PASSWORD` env var. A bare `git tag` push does NOT publish — only a published Release does. Only cut a Release when you intend to publish.
+
+Release steps (version bump goes straight to `main`, no PR):
+
+1. On `main`, change only `version` in `pyproject.toml`. Commit with subject `vX.Y.Z` (e.g. `v0.6.0`) and push to `main`. `main` is protected (requires `pre-commit.ci - pr`), so this push uses the admin bypass.
+2. Tag that commit `X.Y.Z` — no `v` prefix (e.g. `0.6.0`).
+3. Publish a GitHub Release from that tag, titled `X.Y.Z`. This step uploads to PyPI.
